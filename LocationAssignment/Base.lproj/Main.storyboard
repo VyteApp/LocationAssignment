@@ -17,51 +17,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV2-eg-5Jk">
-                                <rect key="frame" x="219" y="67" width="163" height="30"/>
-                                <gestureRecognizers/>
-                                <state key="normal" title="Begin Logging Location">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startLoggingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uzW-YP-yeZ"/>
-                                    <outletCollection property="gestureRecognizers" destination="0d0-VJ-vlt" appends="YES" id="jrB-Uz-em5"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vyte Location Assignment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS8-77-fha">
-                                <rect key="frame" x="200" y="20" width="200" height="21"/>
+                                <rect key="frame" x="200" y="28" width="200" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-3b-6b9">
-                                <rect key="frame" x="24" y="128" width="560" height="425"/>
+                                <rect key="frame" x="20" y="66" width="560" height="289"/>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="CAB-zM-NHp"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="U4x-ZM-zHx"/>
                                 </connections>
                             </mapView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Location Data (Updated every 10 Seconds)" translatesAutoresizingMaskIntoConstraints="NO" id="Xcq-wk-gn1">
+                                <rect key="frame" x="16" y="363" width="564" height="217"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" updatesFrequently="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="217" id="sfV-DQ-gQG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="JS8-77-fha" firstAttribute="centerX" secondItem="bV2-eg-5Jk" secondAttribute="centerX" id="7Jk-hV-BEC"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="neZ-3b-6b9" secondAttribute="bottom" constant="47" id="F46-pM-rm2"/>
-                            <constraint firstItem="neZ-3b-6b9" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="XFJ-GH-vU4"/>
-                            <constraint firstItem="neZ-3b-6b9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="XNT-UD-RcH"/>
-                            <constraint firstItem="bV2-eg-5Jk" firstAttribute="top" secondItem="JS8-77-fha" secondAttribute="bottom" constant="26" id="dkS-GN-b1v"/>
-                            <constraint firstItem="neZ-3b-6b9" firstAttribute="top" secondItem="bV2-eg-5Jk" secondAttribute="bottom" constant="31" id="hba-QZ-atM"/>
-                            <constraint firstItem="bV2-eg-5Jk" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="lRr-s2-7JB"/>
-                            <constraint firstItem="JS8-77-fha" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rpf-JW-fa3"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="centerX" secondItem="JS8-77-fha" secondAttribute="centerX" id="A32-Y4-A6G"/>
+                            <constraint firstItem="JS8-77-fha" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="CnH-rl-FWK"/>
+                            <constraint firstAttribute="bottom" secondItem="Xcq-wk-gn1" secondAttribute="bottom" constant="20" symbolic="YES" id="HvF-WQ-jN3"/>
+                            <constraint firstItem="JS8-77-fha" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="QBv-zJ-IM9"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="trailing" secondItem="Xcq-wk-gn1" secondAttribute="trailing" id="Tf1-8K-IG0"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="top" secondItem="JS8-77-fha" secondAttribute="bottom" constant="17" id="jnj-8w-KTp"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="lqN-SF-cxO"/>
+                            <constraint firstItem="Xcq-wk-gn1" firstAttribute="top" secondItem="neZ-3b-6b9" secondAttribute="bottom" constant="8" symbolic="YES" id="njk-ZG-QOB"/>
+                            <constraint firstItem="Xcq-wk-gn1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="sVs-ym-3q1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainLabel" destination="JS8-77-fha" id="wgR-49-GrM"/>
                         <outlet property="mapView" destination="neZ-3b-6b9" id="XHb-Ik-PaX"/>
-                        <outlet property="startLoggingButton" destination="bV2-eg-5Jk" id="pLD-ct-Ox1"/>
+                        <outlet property="textView" destination="Xcq-wk-gn1" id="jfq-PN-z1i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="0d0-VJ-vlt"/>
             </objects>
         </scene>
     </scenes>

@@ -9,17 +9,24 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate {
 
     @IBOutlet var mainLabel : UILabel!
     @IBOutlet var startLoggingButton : UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var textView: UITextView!
+    var timer: dispatch_source_t!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        textView.delegate = self
+        textView.editable = false
         mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+        startTimer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,32 +34,26 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func startLoggingButtonTapped(sender : AnyObject){
-        //TODO: Log location(lat/long) and accuracy data to file
-        
-        //let documentDirectoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-        //let randFile = "log"+String(Int(arc4random_uniform(7)))+".txt"
-        //let fileDestinationUrl = documentDirectoryURL.URLByAppendingPathComponent(randFile)
-        //let currentLocation = mapView.userLocation.location
-        //TODO: Need accuracy value
-        //let locationData = currentLocation.description
-        //locationData.writeToURL(fileDestinationUrl, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+    
+    func startTimer() {
+        let queue = dispatch_queue_create("com.domain.app.timer", nil)
+        timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue)
+        dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC, 1 * NSEC_PER_SEC) // every 10 seconds, with leeway of 1 second
+        dispatch_source_set_event_handler(timer) {
+            if (self.mapView.userLocationVisible){
+                dispatch_async(dispatch_get_main_queue()){
+                self.textView.text.extend("\n+"+self.mapView.userLocation.location.description)
+                }
+            }
+        }
+        dispatch_resume(timer)
     }
     
-    func zoomIn() {
-        let userLocation = mapView.userLocation
-        
-        let region = MKCoordinateRegionMakeWithDistance(
-            userLocation.location.coordinate, 50, 50)
-        
-        mapView.setRegion(region, animated: true)
+    func stopTimer() {
+        dispatch_source_cancel(timer)
+        timer = nil
     }
-    
-    func mapView(mapView: MKMapView!, didUpdateUserLocation
-        userLocation: MKUserLocation!) {
-            zoomIn()
-            //mapView.centerCoordinate = userLocation.location.coordinate
-    }
+
     
 
 }
