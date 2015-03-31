@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="LocationAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,10 +16,52 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV2-eg-5Jk">
+                                <rect key="frame" x="219" y="67" width="163" height="30"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="Begin Logging Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startLoggingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uzW-YP-yeZ"/>
+                                    <outletCollection property="gestureRecognizers" destination="0d0-VJ-vlt" appends="YES" id="jrB-Uz-em5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vyte Location Assignment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS8-77-fha">
+                                <rect key="frame" x="200" y="20" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-3b-6b9">
+                                <rect key="frame" x="24" y="128" width="560" height="425"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="CAB-zM-NHp"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="JS8-77-fha" firstAttribute="centerX" secondItem="bV2-eg-5Jk" secondAttribute="centerX" id="7Jk-hV-BEC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="neZ-3b-6b9" secondAttribute="bottom" constant="47" id="F46-pM-rm2"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="XFJ-GH-vU4"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="XNT-UD-RcH"/>
+                            <constraint firstItem="bV2-eg-5Jk" firstAttribute="top" secondItem="JS8-77-fha" secondAttribute="bottom" constant="26" id="dkS-GN-b1v"/>
+                            <constraint firstItem="neZ-3b-6b9" firstAttribute="top" secondItem="bV2-eg-5Jk" secondAttribute="bottom" constant="31" id="hba-QZ-atM"/>
+                            <constraint firstItem="bV2-eg-5Jk" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="lRr-s2-7JB"/>
+                            <constraint firstItem="JS8-77-fha" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rpf-JW-fa3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainLabel" destination="JS8-77-fha" id="wgR-49-GrM"/>
+                        <outlet property="mapView" destination="neZ-3b-6b9" id="XHb-Ik-PaX"/>
+                        <outlet property="startLoggingButton" destination="bV2-eg-5Jk" id="pLD-ct-Ox1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0d0-VJ-vlt"/>
             </objects>
         </scene>
     </scenes>

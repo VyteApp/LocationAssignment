@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C23B7891ACA5DCB00BA7863 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC5A08F1ACA52BA001EDE1F /* MapKit.framework */; };
 		0CC5A06E1ACA35CE001EDE1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5A06D1ACA35CE001EDE1F /* AppDelegate.swift */; };
 		0CC5A0701ACA35CE001EDE1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5A06F1ACA35CE001EDE1F /* ViewController.swift */; };
 		0CC5A0731ACA35CE001EDE1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC5A0711ACA35CE001EDE1F /* Main.storyboard */; };
@@ -25,6 +26,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0C23B78B1ACA5DCC00BA7863 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0CC5A0681ACA35CE001EDE1F /* LocationAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC5A06C1ACA35CE001EDE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +50,7 @@
 		0CC5A07D1ACA35CE001EDE1F /* LocationAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC5A0821ACA35CE001EDE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CC5A0831ACA35CE001EDE1F /* LocationAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAssignmentTests.swift; sourceTree = "<group>"; };
+		0CC5A08F1ACA52BA001EDE1F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C23B7891ACA5DCB00BA7863 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +75,7 @@
 		0CC5A05F1ACA35CE001EDE1F = {
 			isa = PBXGroup;
 			children = (
+				0CC5A08F1ACA52BA001EDE1F /* MapKit.framework */,
 				0CC5A06A1ACA35CE001EDE1F /* LocationAssignment */,
 				0CC5A0801ACA35CE001EDE1F /* LocationAssignmentTests */,
 				0CC5A0691ACA35CE001EDE1F /* Products */,
@@ -122,6 +139,7 @@
 				0CC5A0641ACA35CE001EDE1F /* Sources */,
 				0CC5A0651ACA35CE001EDE1F /* Frameworks */,
 				0CC5A0661ACA35CE001EDE1F /* Resources */,
+				0C23B78B1ACA5DCC00BA7863 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -405,6 +423,7 @@
 				0CC5A0891ACA35CE001EDE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CC5A08A1ACA35CE001EDE1F /* Build configuration list for PBXNativeTarget "LocationAssignmentTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +432,7 @@
 				0CC5A08C1ACA35CE001EDE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
